@@ -33,6 +33,7 @@ public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal(String t , GestionDato gd){
         this.setTitle(t);
         this.setSize(700, 600);
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocation(300, 100);
         this.setDefaultCloseOperation(3);
         this.gD=gd;
@@ -76,9 +77,9 @@ public class VentanaPrincipal extends JFrame {
         this.menuList.get(4).add(this.menuItemList.get(4));
         
         
-        //this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));
-        //this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
-        //this.menuItemList.get(2).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(0).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(1).addActionListener(new EventoVentanaPrincipal(this));
+        this.menuItemList.get(2).addActionListener(new EventoVentanaPrincipal(this));
         //this.menuItemList.get(3).addActionListener(new EventoVentanaPrincipal(this));
         //this.menuItemList.get(4).addActionListener(new EventoVentanaPrincipal(this));
   
