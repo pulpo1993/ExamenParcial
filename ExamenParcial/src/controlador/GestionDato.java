@@ -94,6 +94,12 @@ public class GestionDato {
         retorno= this.presentacionList.add(pr);
         return retorno;
     }
+
+    @Override
+    public String toString() {
+        return "GestionDato{" + "artistaList=" + artistaList + ", asistenteList=" + asistenteList + ", boletoList=" + boletoList + ", festivalList=" + festivalList + ", presentacionList=" + presentacionList + '}';
+    }
+    
     public Asistente buscarAsistente(String txt) {
         Asistente retorno = null;
         int i = 0;

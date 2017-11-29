@@ -31,6 +31,9 @@ public class Artista extends Persona {
         this.anioExperiencia = anioExperiencia;
     }
 
-  
+    @Override
+    public String toString() {
+        return "Artista{" + "generoMusical=" + generoMusical + ", anioExperiencia=" + anioExperiencia + '}';
+    }
     
 }

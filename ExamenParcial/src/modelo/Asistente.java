@@ -24,6 +24,10 @@ public class Asistente extends Persona{
     public void setEdad(String edad) {
         this.edad = edad;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Asistente{" + "edad=" + edad + '}';
+    }
+   
 }

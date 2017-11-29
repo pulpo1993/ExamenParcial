@@ -54,13 +54,9 @@ public abstract class Persona  {
         this.cedula = cedula;
     }
 
-    
-
     @Override
     public String toString() {
         return "Persona{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + '}';
     }
-    
-    
-    
+        
 }

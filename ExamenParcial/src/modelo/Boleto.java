@@ -44,6 +44,10 @@ public class Boleto {
     public void setNumAsisto(String numAsisto) {
         this.numAsisto = numAsisto;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Boleto{" + "asistente=" + asistente + ", presentacion=" + presentacion + ", numAsisto=" + numAsisto + '}';
+    }
     
 }

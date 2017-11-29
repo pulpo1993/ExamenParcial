@@ -42,5 +42,11 @@ public class Presentacion {
 
     public void setOrdenPresentacion(int ordenPresentacion) {
         this.ordenPresentacion = ordenPresentacion;
-    }       
+    } 
+
+    @Override
+    public String toString() {
+        return "Presentacion{" + "festival=" + festival + ", artista=" + artista + ", ordenPresentacion=" + ordenPresentacion + '}';
+    }
+
 }
