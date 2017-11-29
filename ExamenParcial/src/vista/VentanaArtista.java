@@ -201,7 +201,7 @@ public class VentanaArtista extends JInternalFrame {
         this.add(this.panelInicial);
 
     }
-    /*public Object[][] cargarDatos(int f, int c){
+    public Object[][] cargarDatos(int f, int c){
         Object[][] retorno=new Object[f][c];
         int i=0;
         for(Artista a:this.gD.getArtistaList()){
@@ -214,6 +214,6 @@ public class VentanaArtista extends JInternalFrame {
             i++;
         }
         return retorno;
-    }*/
+    }
 
 }

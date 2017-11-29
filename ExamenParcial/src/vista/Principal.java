@@ -13,8 +13,8 @@ import controlador.GestionDato;
  */
 public class Principal {
     public static void main(String[] args) {
-        GestionDato gd = new GestionDato();
-       VentanaPrincipal vp= new VentanaPrincipal("Festival", gd);
+        //GestionDato gd = new GestionDato();
+       //VentanaPrincipal vp= new VentanaPrincipal("Festival", gd);
     }
     
 }

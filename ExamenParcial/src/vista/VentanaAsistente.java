@@ -199,7 +199,7 @@ public class VentanaAsistente extends JInternalFrame {
         this.add(this.panelInicial);
 
     }
-    /*public Object[][] cargarDatos(int f, int c){
+    public Object[][] cargarDatos(int f, int c){
         Object[][] retorno=new Object[f][c];
         int i=0;
         for(Asistente a:this.gD.getAsistenteList()){
@@ -211,6 +211,6 @@ public class VentanaAsistente extends JInternalFrame {
             i++;
         }
         return retorno;
-    }*/
+    }
 
 }

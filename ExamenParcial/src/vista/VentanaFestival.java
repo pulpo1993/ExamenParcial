@@ -196,18 +196,18 @@ public class VentanaFestival extends JInternalFrame {
         this.add(this.panelInicial);
    
     }
-    /*public Object[][] cargarDatos(int f, int c){
+    public Object[][] cargarDatos(int f, int c){
         Object[][] retorno=new Object[f][c];
         int i=0;
-        for(Festival f:this.gD.getFestivalList()){
-            retorno[i][0]=f.getNombreFestival();
-            retorno[i][1]=f.getDireccion();
-            retorno[i][2]=f.getHoraFestival();
+        for(Festival fes:this.gD.getFestivalList()){
+            retorno[i][0]=fes.getNombreFestival();
+            retorno[i][1]=fes.getDireccion();
+            retorno[i][2]=fes.getHoraFestival();
             i++;
         }
         return retorno;
-    }*/
-    
+    }
+   
 }
 
 

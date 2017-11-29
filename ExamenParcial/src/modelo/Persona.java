@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Pulpo
  */
-public class Persona  {
+public abstract class Persona  {
     private String codigo;
     private String nombre;
     private String apellido;
@@ -53,6 +53,14 @@ public class Persona  {
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+    
+
+    @Override
+    public String toString() {
+        return "Persona{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + '}';
+    }
+    
     
     
 }
