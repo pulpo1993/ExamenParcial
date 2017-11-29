@@ -16,16 +16,16 @@ public class GestionDato {
     private List<Boleto> boletoList;
     private List<Festival> festivalList;
     private List<Presentacion> presentacionList;
-    private List<Persona> personaList;
 
-    public GestionDato(List<Artista> artistaList, List<Asistente> asistenteList, List<Boleto> boletoList, List<Festival> festivalList, List<Presentacion> presentacionList, List<Persona> personaList) {
+    public GestionDato(List<Artista> artistaList, List<Asistente> asistenteList, List<Boleto> boletoList, List<Festival> festivalList, List<Presentacion> presentacionList) {
         this.artistaList = artistaList;
         this.asistenteList = asistenteList;
         this.boletoList = boletoList;
         this.festivalList = festivalList;
         this.presentacionList = presentacionList;
-        this.personaList = personaList;
     }
+    
+    
 
     public List<Artista> getArtistaList() {
         return artistaList;
@@ -67,13 +67,7 @@ public class GestionDato {
         this.presentacionList = presentacionList;
     }
 
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
-    }
+   
 
    
     public boolean addAsistente(Asistente as){
@@ -101,5 +95,50 @@ public class GestionDato {
         retorno= this.presentacionList.add(pr);
         return retorno;
     }
+    public Asistente buscarAsistente(String txt) {
+        Asistente retorno = null;
+        int i = 0;
+        for (Asistente a : this.asistenteList) {
+            if (a.getNombre().equals(txt)) {
+                i++;
+                return a;
+            }
+        }
+        return retorno;
+    }
     
+    public Presentacion buscarPresentacion(String txt) {
+        Presentacion retorno = null;
+        int i = 0;
+        for (Presentacion p : this.presentacionList) {
+            if (p.getFestival().equals(txt)) {
+                i++;
+                return p;
+            }
+        }
+        return retorno;
+    }
+    public Artista buscarArtista(String txt){
+        Artista retorno=null;
+        int i=0;
+        for(Artista ar : this.artistaList){
+            if(ar.getNombre().equals(txt)){
+                i++;
+                return ar;
+            }
+        }
+        return retorno;
+    }
+    
+    public Festival buscarFestival(String txt){
+        Festival retorno=null;
+        int i=0;
+        for(Festival fe : this.festivalList){
+            if(fe.getNombreFestival().equals(txt)){
+                i++;
+                return fe;
+            }
+        }
+        return retorno;
+    }
 }
