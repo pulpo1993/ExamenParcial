@@ -12,7 +12,7 @@ package modelo;
 public class Asistente extends Persona{
     private String edad;
 
-    public Asistente(String edad, String codigo, String nombre, String apellido, String cedula) {
+    public Asistente(int codigo, String nombre, String apellido, String cedula, String edad) {
         super(codigo, nombre, apellido, cedula);
         this.edad = edad;
     }

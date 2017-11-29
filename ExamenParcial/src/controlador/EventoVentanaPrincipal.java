@@ -38,29 +38,17 @@ public class EventoVentanaPrincipal implements ActionListener {
             VentanaAsistente vAs = new VentanaAsistente("Registro de Asistentes", this.vP.getgD());
             vAs.setVisible(true);
             this.vP.getEscritorio().add(vAs);
-        }/*
-        if (e.getSource().equals(this.vI.getMenuItemList().get(3))) {
-            VentanaAspirante vA = new VentanaAspirante("Registro de Aspirantes", this.vI.getgD());
-            vA.setVisible(true);
-            this.vI.getEscritorio().add(vA);
         }
-        if (e.getSource().equals(this.vI.getMenuItemList().get(4))) {
-            VentanaInscripcion vIns = new VentanaInscripcion("Inscripcion", this.vI.getgD());
-            vIns.setVisible(true);
-            this.vI.getEscritorio().add(vIns);
+        if (e.getSource().equals(this.vP.getMenuItemList().get(3))) {
+            VentanaPresentacion vPr = new VentanaPresentacion("Registro de Presentaciones", this.vP.getgD());
+            vPr.setVisible(true);
+            this.vP.getEscritorio().add(vPr);
         }
-        if (e.getSource().equals(this.vI.getMenuItemList().get(5))) {
-            VentanaBuscarAspiranteCarrera vBuscarC = new VentanaBuscarAspiranteCarrera("Busqueda Carreras", this.vI.getgD());
-            vBuscarC.setVisible(true);
-            this.vI.getEscritorio().add(vBuscarC);
+        if (e.getSource().equals(this.vP.getMenuItemList().get(4))) {
+            VentanaBoleto vB = new VentanaBoleto("Registro de Boletos", this.vP.getgD());
+            vB.setVisible(true);
+            this.vP.getEscritorio().add(vB);
         }
-        if (e.getSource().equals(this.vI.getMenuItemList().get(6))) {
-            VentanaBuscarListaAspirante vBuscarA = new VentanaBuscarListaAspirante("Busqueda Aspirante", this.vI.getgD());
-            vBuscarA.setVisible(true);
-            this.vI.getEscritorio().add(vBuscarA);
-        }*/
-
     }
-
 }
 

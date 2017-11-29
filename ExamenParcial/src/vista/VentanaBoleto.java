@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
+
 import controlador.EventoVentanaBoleto;
 import controlador.GestionDato;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
@@ -18,120 +17,31 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelo.Asistente;
 import modelo.Boleto;
-/**
- *
- * @author Pulpo
- */
+import modelo.Presentacion;
+
 public class VentanaBoleto extends JInternalFrame {
-    private List<JLabel> etiquetaList;
-    private List<JButton> botonList;
-    private List<JTextField> txtList;
-    private Object[][] datos;
-    private Object[] encabezado;
+
+    private Object [][] datos; 
+    private Object [] encabezado;
     private DefaultTableModel modeloTabla;
     private JTable tabla;
     private JScrollPane scroll;
-    private JComboBox combobox1;
-    private JComboBox combobox2;
+    private JButton boton;
+    private JPanel panelInicial;
+    private List<JLabel> labelList;
+    private JTextField texto;
+    private List<JButton> botonList;
+    private List<JComboBox> combo;
     private GestionDato gD;
-    private ResourceBundle rB;
 
-    public VentanaBoleto(GestionDato gD) {
-        super("Boleto", true, true, true, true);
-        this.setSize(550, 300);
+    public VentanaBoleto(String title, GestionDato gD) {
+        super(title, true, true, true, true);
+        this.setSize(400, 350);
+        this.setLocation(800, 300);
         this.gD = gD;
-        iniciaComponente();
-    }
-    public void iniciaComponente() {
-        this.etiquetaList = new ArrayList<JLabel>();
-        this.etiquetaList.add(new JLabel("Asistente: "));
-        this.etiquetaList.add(new JLabel("Presentacion: "));
-        this.etiquetaList.add(new JLabel("N asistentes: "));
-
-        this.txtList = new ArrayList<JTextField>();
-        this.txtList.add(new JTextField(15));
-
-        JPanel panel = new JPanel();
-        this.botonList = new ArrayList<JButton>();
-        this.botonList.add(new JButton("Guardar"));
-        this.combobox1 = new JComboBox(this.CargaCombo());
-        this.combobox2 = new JComboBox(this.CargaCombo2());
-        this.botonList.get(0).addActionListener(new EventoVentanaBoleto(this));
-        this.encabezado = new Object[3];
-        this.encabezado[0] = "Asistente";
-        this.encabezado[1] = "Presentacion";
-        this.encabezado[2] = "N asistentes";
-
-        this.datos = cargaDatosTabla(this.gD.getBoletoList().size(), 3);
-
-        this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
-        this.tabla = new JTable(this.modeloTabla);
-        this.scroll = new JScrollPane(this.tabla);
-        panel.add(this.etiquetaList.get(0));
-        panel.add(this.combobox1);
-        panel.add(this.etiquetaList.get(1));
-        panel.add(this.combobox2);
-        panel.add(this.etiquetaList.get(2));
-        panel.add(this.txtList.get(0));
-        panel.add(botonList.get(0));
-        panel.add(this.scroll);
-        this.add(panel);
-    }
-    public Object[][] cargaDatosTabla(int h, int w) {
-        Object[][] retorno = new Object[h][w];
-        int i = 0;
-        for (Boleto b : this.gD.getBoletoList()) {
-            retorno[i][0] = b.getAsistente().getNombre();
-            retorno[i][1] = b.getPresentacion().getFestival();
-            retorno[i][2] = b.getNumAsisto();
-            i++;
-        }
-        return retorno;
-    }
-
-    public Object[] CargaCombo() {
-        String[] retorno = new String[this.gD.getBoletoList().size()];
-        int i = 0;
-        for (Boleto b : this.gD.getBoletoList()) {
-            retorno[i] = b.getAsistente().getNombre();
-            i++;
-        }
-        return retorno;
-    }
-
-    public Object[] CargaCombo2() {
-        String[] retorno = new String[this.gD.getBoletoList().size()];
-        int i = 0;
-        for (Boleto b : this.gD.getBoletoList()) {
-            retorno[i] = b.getPresentacion().getFestival().toString();
-            i++;
-        }
-        return retorno;
-    }
-
-    public List<JLabel> getEtiquetaList() {
-        return etiquetaList;
-    }
-
-    public void setEtiquetaList(List<JLabel> etiquetaList) {
-        this.etiquetaList = etiquetaList;
-    }
-
-    public List<JButton> getBotonList() {
-        return botonList;
-    }
-
-    public void setBotonList(List<JButton> botonList) {
-        this.botonList = botonList;
-    }
-
-    public List<JTextField> getTxtList() {
-        return txtList;
-    }
-
-    public void setTxtList(List<JTextField> txtList) {
-        this.txtList = txtList;
+        this.iniciaComponente();
     }
 
     public Object[][] getDatos() {
@@ -174,20 +84,36 @@ public class VentanaBoleto extends JInternalFrame {
         this.scroll = scroll;
     }
 
-    public JComboBox getCombobox1() {
-        return combobox1;
+    public JButton getBoton() {
+        return boton;
     }
 
-    public void setCombobox1(JComboBox combobox1) {
-        this.combobox1 = combobox1;
+    public void setBoton(JButton boton) {
+        this.boton = boton;
     }
 
-    public JComboBox getCombobox2() {
-        return combobox2;
+    public JPanel getPanelInicial() {
+        return panelInicial;
     }
 
-    public void setCombobox2(JComboBox combobox2) {
-        this.combobox2 = combobox2;
+    public void setPanelInicial(JPanel panelInicial) {
+        this.panelInicial = panelInicial;
+    }
+
+    public JTextField getTexto() {
+        return texto;
+    }
+
+    public void setTexto(JTextField texto) {
+        this.texto = texto;
+    }
+
+    public List<JButton> getBotonList() {
+        return botonList;
+    }
+
+    public void setBotonList(List<JButton> botonList) {
+        this.botonList = botonList;
     }
 
     public GestionDato getgD() {
@@ -198,14 +124,110 @@ public class VentanaBoleto extends JInternalFrame {
         this.gD = gD;
     }
 
-    public ResourceBundle getrB() {
-        return rB;
+    public List<JLabel> getLabelList() {
+        return labelList;
     }
 
-    public void setrB(ResourceBundle rB) {
-        this.rB = rB;
+    public void setLabelList(List<JLabel> labelList) {
+        this.labelList = labelList;
     }
 
-    
+    public List<JComboBox> getCombo() {
+        return combo;
+    }
+
+    public void setCombo(List<JComboBox> combo) {
+        this.combo = combo;
+    }
+
+
+
+    public void iniciaComponente() {
+        this.panelInicial = new JPanel(new BorderLayout());
+        JPanel panelNorte = new JPanel(new BorderLayout());
+
+        this.labelList = new ArrayList<JLabel>();
+        this.labelList.add(new JLabel("Asistente :"));
+        this.labelList.add(new JLabel("Presentacion :"));
+        this.labelList.add(new JLabel("Numero Asiento :"));
+        this.labelList.add(new JLabel("Registro de Boletos"));
+
+        this.texto = new JTextField();
+        this.texto.add(new JTextField());
+        
+        this.botonList = new ArrayList<JButton>();
+        this.botonList.add(new JButton("Guardar"));
+        for (int i = 0; i < this.botonList.size(); i++) {
+            this.botonList.get(i).addActionListener(new EventoVentanaBoleto(this));
+        }
+
+        LayoutManager disDatos = new GridLayout(4, 2);
+        LayoutManager disTitulo = new FlowLayout();
+
+        JPanel panelTitulo = new JPanel(disTitulo);
+        JPanel panelIngreso = new JPanel(disDatos);
+
+        this.combo= new ArrayList<JComboBox>();
+        this.combo.add(new JComboBox());
+        this.combo.add(new JComboBox());
+        
+        
+        panelIngreso.add(this.labelList.get(0));
+        panelIngreso.add(this.combo.get(0));
+        panelIngreso.add(this.labelList.get(1));
+        panelIngreso.add(this.combo.get(1));
+        panelIngreso.add(this.labelList.get(2));
+        panelIngreso.add(this.texto);
+        
+       
+        panelTitulo.add(this.labelList.get(3));
+        panelIngreso.add(this.botonList.get(0));
+
+        panelNorte.add(panelTitulo, BorderLayout.NORTH);
+        panelNorte.add(panelIngreso, BorderLayout.CENTER);
+
+        //Tabla 
+        this.encabezado = new Object[3];
+        this.encabezado[0] = "Asistente";
+        this.encabezado[1] = "Presentaion";
+        this.encabezado[2] = "Numero Asiento";
+
+        this.datos = cargarDatos(this.gD.getPresentacionList().size(), this.encabezado.length);
+        this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
+        this.tabla = new JTable(this.modeloTabla);
+        this.scroll = new JScrollPane(this.tabla);
+
+        this.boton = new JButton("Actualizar");
+        this.boton.addActionListener(new EventoVentanaBoleto(this));
+
+        this.panelInicial.add(panelNorte, BorderLayout.NORTH);
+        this.panelInicial.add(this.scroll, BorderLayout.CENTER);
+        this.panelInicial.add(this.boton, BorderLayout.SOUTH);
+
+        this.add(this.panelInicial);
+
+    }
+
+    public Object[][] cargarDatos(int f, int k) {
+        Object[][] retorno = new Object[f][k];
+        int i = 0;
+        for (Boleto b : this.gD.getBoletoList()) {
+            retorno [i][0]=b.getPresentacion().getFestival().getNombreFestival();
+            retorno [i][1]=b.getAsistente().getNombre();
+            retorno [i][2]=b.getNumAsisto();
+            i++;
+        }
+        return retorno;
+    }
+
+    public void cargarCombo() {
+        this.combo.get(0).removeAllItems();
+        this.combo.get(1).removeAllItems();
+        for (Presentacion p : this.gD.getPresentacionList()) {
+            this.combo.get(0).addItem(p.getFestival().getCodigo() + " | " + p.getFestival().getNombreFestival());
+        }
+        for (Asistente a: this.gD.getAsistenteList()) {
+            this.combo.get(1).addItem(a.getCodigo() + " | " + a.getNombre());
+        }
+    }
 }
-

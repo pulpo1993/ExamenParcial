@@ -10,6 +10,7 @@ package modelo;
  * @author Pulpo
  */
 public class Boleto {
+    
     private Asistente asistente;
     private Presentacion presentacion;
     private String numAsisto;

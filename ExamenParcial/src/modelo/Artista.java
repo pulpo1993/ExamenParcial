@@ -9,7 +9,7 @@ public class Artista extends Persona {
     private String generoMusical;
     private String  anioExperiencia;
 
-    public Artista(String generoMusical, String anioExperiencia, String codigo, String nombre, String apellido, String cedula) {
+    public Artista(int codigo, String nombre, String apellido, String cedula, String generoMusical, String anioExperiencia) {
         super(codigo, nombre, apellido, cedula);
         this.generoMusical = generoMusical;
         this.anioExperiencia = anioExperiencia;

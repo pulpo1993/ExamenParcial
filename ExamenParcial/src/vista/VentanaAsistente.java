@@ -5,7 +5,7 @@
  */
 package vista;
 
-import controlador.EventoVentanaArtista;
+import controlador.EventoVentanaAsistente;
 import controlador.GestionDato;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -36,7 +36,7 @@ public class VentanaAsistente extends JInternalFrame {
         super(title, true, true, true, true);
         this.gD = gD;
         this.setSize(500, 400);
-        this.setLocation(20, 20);
+        this.setLocation(865, 20);
         this.iniciaCompontente();
     }
 
@@ -159,7 +159,7 @@ public class VentanaAsistente extends JInternalFrame {
         this.botonList.add(new JButton("Guardar"));
         this.botonList.add(new JButton("Limpiar"));
         for (int i = 0; i < this.botonList.size(); i++) {
-            //this.botonList.get(i).addActionListener(new EventoVentanaArtista(this));
+            this.botonList.get(i).addActionListener(new EventoVentanaAsistente(this));
         }
 
         LayoutManager disDatos = new GridLayout(6, 2);
@@ -188,7 +188,7 @@ public class VentanaAsistente extends JInternalFrame {
         this.encabezado[3] = "Cedula";
         this.encabezado[4] = "Edad";
 
-        //this.datos=cargarDatos(this.gD.getAsistenteList().size(), this.encabezado.length);
+        this.datos=cargarDatos(this.gD.getAsistenteList().size(), this.encabezado.length);
         this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
         this.scroll = new JScrollPane(this.tabla);

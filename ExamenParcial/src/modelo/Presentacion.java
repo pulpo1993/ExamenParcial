@@ -12,9 +12,9 @@ package modelo;
 public class Presentacion {
     private Festival festival;
     private Artista artista;
-    private String ordenPresentacion;
+    private int ordenPresentacion;
 
-    public Presentacion(Festival festival, Artista artista, String ordenPresentacion) {
+    public Presentacion(Festival festival, Artista artista, int ordenPresentacion) {
         this.festival = festival;
         this.artista = artista;
         this.ordenPresentacion = ordenPresentacion;
@@ -36,14 +36,11 @@ public class Presentacion {
         this.artista = artista;
     }
 
-    public String getOrdenPresentacion() {
+    public int getOrdenPresentacion() {
         return ordenPresentacion;
     }
 
-    public void setOrdenPresentacion(String ordenPresentacion) {
+    public void setOrdenPresentacion(int ordenPresentacion) {
         this.ordenPresentacion = ordenPresentacion;
-    }
-    
-    
-        
+    }       
 }

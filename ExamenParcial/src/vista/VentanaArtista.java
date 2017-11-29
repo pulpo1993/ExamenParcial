@@ -36,7 +36,7 @@ public class VentanaArtista extends JInternalFrame {
         super(title, true, true, true, true);
         this.gD = gD;
         this.setSize(500, 400);
-        this.setLocation(20, 20);
+        this.setLocation(360, 20);
         this.iniciaCompontente();
     }
 
@@ -160,7 +160,7 @@ public class VentanaArtista extends JInternalFrame {
         this.botonList.add(new JButton("Guardar"));
         this.botonList.add(new JButton("Limpiar"));
         for (int i = 0; i < this.botonList.size(); i++) {
-            //this.botonList.get(i).addActionListener(new EventoVentanaArtista(this));
+            this.botonList.get(i).addActionListener(new EventoVentanaArtista(this));
         }
 
         LayoutManager disDatos = new GridLayout(7, 2);
@@ -190,7 +190,7 @@ public class VentanaArtista extends JInternalFrame {
         this.encabezado[4] = "Genero";
         this.encabezado[5] = "Experiencia";
 
-        //this.datos=cargarDatos(this.gD.getArtistaList().size(), this.encabezado.length);
+        this.datos=cargarDatos(this.gD.getArtistaList().size(), this.encabezado.length);
         this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
         this.tabla = new JTable(this.modeloTabla);
         this.scroll = new JScrollPane(this.tabla);

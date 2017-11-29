@@ -37,7 +37,7 @@ public class VentanaFestival extends JInternalFrame {
         super(title,true,true,true,true);
         this.gD = gD;
         this.setSize(350, 400);
-        this.setLocation(20,20);
+        this.setLocation(5,20);
         this.iniciaCompontente();   
     }
 
@@ -144,6 +144,7 @@ public class VentanaFestival extends JInternalFrame {
         JPanel panelNorte=new JPanel(new BorderLayout());
         
         this.labelList=new ArrayList<JLabel>();
+        this.labelList.add(new JLabel("Codigo :"));
         this.labelList.add(new JLabel("Nombre :"));
         this.labelList.add(new JLabel("Direccion :"));
         this.labelList.add(new JLabel("Hora :"));
@@ -158,10 +159,10 @@ public class VentanaFestival extends JInternalFrame {
         this.botonList.add(new JButton("Guardar"));
         this.botonList.add(new JButton("Limpiar"));
         for(int i=0; i<this.botonList.size();i++){
-            //this.botonList.get(i).addActionListener(new EventoVentanaFestival(this));
+            this.botonList.get(i).addActionListener(new EventoVentanaFestival(this));
         }
         
-        LayoutManager disDatos=new GridLayout(4,2);
+        LayoutManager disDatos=new GridLayout(5,2);
         LayoutManager disTitulo=new FlowLayout();
         
         JPanel panelTitulo=new JPanel(disTitulo);
@@ -172,7 +173,7 @@ public class VentanaFestival extends JInternalFrame {
             panelIngreso.add(this.textoList.get(i));
         }      
               
-        panelTitulo.add(this.labelList.get(3));
+        panelTitulo.add(this.labelList.get(4));
         panelIngreso.add(this.botonList.get(0));
         panelIngreso.add(this.botonList.get(1));
         
@@ -180,12 +181,13 @@ public class VentanaFestival extends JInternalFrame {
         panelNorte.add(panelIngreso, BorderLayout.CENTER);
         
         //Tabla 
-        this.encabezado=new Object[3];
-        this.encabezado[0]="Nombre";
-        this.encabezado[1]="Direccion";
-        this.encabezado[2]="Hora";
+        this.encabezado=new Object[4];
+        this.encabezado[0]="Codigo";
+        this.encabezado[1]="Nombre";
+        this.encabezado[2]="Direccion";
+        this.encabezado[3]="Hora";
         
-        //this.datos=cargarDatos(this.gD.getFestivalList().size(), this.encabezado.length);
+        this.datos=cargarDatos(this.gD.getFestivalList().size(), this.encabezado.length);
         this.modeloTabla=new DefaultTableModel(this.datos, this.encabezado);
         this.tabla=new JTable(this.modeloTabla);
         this.scroll= new JScrollPane(this.tabla);
@@ -200,9 +202,10 @@ public class VentanaFestival extends JInternalFrame {
         Object[][] retorno=new Object[f][c];
         int i=0;
         for(Festival fes:this.gD.getFestivalList()){
-            retorno[i][0]=fes.getNombreFestival();
-            retorno[i][1]=fes.getDireccion();
-            retorno[i][2]=fes.getHoraFestival();
+            retorno[i][0]=fes.getCodigo();
+            retorno[i][1]=fes.getNombreFestival();
+            retorno[i][2]=fes.getDireccion();
+            retorno[i][3]=fes.getHoraFestival();
             i++;
         }
         return retorno;

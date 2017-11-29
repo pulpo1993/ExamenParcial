@@ -10,23 +10,23 @@ package modelo;
  * @author Pulpo
  */
 public abstract class Persona  {
-    private String codigo;
+    private int codigo;
     private String nombre;
     private String apellido;
     private String cedula;
 
-    public Persona(String codigo, String nombre, String apellido, String cedula) {
+    public Persona(int codigo, String nombre, String apellido, String cedula) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 

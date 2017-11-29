@@ -6,7 +6,6 @@ import modelo.Artista;
 import modelo.Asistente;
 import modelo.Boleto;
 import modelo.Festival;
-import modelo.Persona;
 import modelo.Presentacion;
 
 public class GestionDato {

@@ -1,44 +1,83 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.Asistente;
+import javax.swing.JOptionPane;
 import modelo.Boleto;
-import modelo.Presentacion;
 import vista.VentanaBoleto;
-/**
- *
- * @author Pulpo
- */
-public class EventoVentanaBoleto implements ActionListener{
-    private VentanaBoleto vBoleto;
 
-    public EventoVentanaBoleto(VentanaBoleto vBoleto) {
-        this.vBoleto = vBoleto;
+public class EventoVentanaBoleto implements ActionListener {
+
+    VentanaBoleto ventana;
+
+    public EventoVentanaBoleto(VentanaBoleto ventana) {
+        this.ventana = ventana;
+    }
+    int cont=0;
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        try {
+            if (ae.getSource().equals(this.ventana.getBotonList().get(0))) {
+                if(this.ventana.getTexto().getText().equals("")){
+                        throw new ExcepcionCamposVacios("");
+                }
+                int codA = codigoAsistente();
+                int codP = codigoPresentacion();
+                String numasisto = this.ventana.getTexto().getText();
+                for (int i = 0; i < this.ventana.getgD().getAsistenteList().size(); i++) {
+                    if (codA == this.ventana.getgD().getAsistenteList().get(i).getCodigo()) {
+                        for (int j = 0; j < this.ventana.getgD().getPresentacionList().size(); j++) {
+                            if (codP == this.ventana.getgD().getPresentacionList().get(j).getFestival().getCodigo()) {
+                                Boleto b = new Boleto(this.ventana.getgD().getAsistenteList().get(j), this.ventana.getgD().getPresentacionList().get(i), numasisto);
+                                for (Boleto bo : this.ventana.getgD().getBoletoList()) {
+                                    if (bo.getAsistente().getCodigo() == b.getAsistente().getCodigo() && bo.getPresentacion().getFestival().getCodigo() == b.getPresentacion().getFestival().getCodigo()) {
+                                        throw new ExcepcionRepetidos("Dato Repetido");
+                                    }
+                                }
+                                this.ventana.getgD().addBoleto(b);
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (NumberFormatException NFE) {
+            JOptionPane.showMessageDialog(ventana, "Ingresar numeros donde se pide", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (NullPointerException NPE) {
+            JOptionPane.showMessageDialog(ventana, "No dejar los ComboBox vacios", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (ExcepcionRepetidos ex) {
+            JOptionPane.showMessageDialog(ventana, "Boleto ya vendido");
+        } catch (ExcepcionCamposVacios ex) {
+            JOptionPane.showMessageDialog(ventana, "No dejar los campos vacios");
+        }
+        if (ae.getSource().equals(this.ventana.getBoton())) {
+            //Actualizar combo
+            this.ventana.cargarCombo();
+        }
+        Object[][] datosInscripcion = this.ventana.cargarDatos(this.ventana.getgD().getBoletoList().size(), 3);
+        this.ventana.setDatos(datosInscripcion);
+        this.ventana.getModeloTabla().setDataVector(this.ventana.getDatos(), this.ventana.getEncabezado());
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(this.vBoleto.getBotonList().get(0)))
-            
-        {
-            System.out.println("hola mundo");
-            String n=this.vBoleto.getTxtList().get(0).getText();
-            String asis=this.vBoleto.getCombobox1().getSelectedItem().toString();
-            String pres=this.vBoleto.getCombobox2().getSelectedItem().toString();
-            Asistente as=this.vBoleto.getgD().buscarAsistente(asis);
-            Presentacion p= this.vBoleto.getgD().buscarPresentacion(pres);
-            Boleto b=new Boleto(as, p, n);
-            this.vBoleto.getgD().addBoleto(b);
-            Object[][] datoBoleto = this.vBoleto.cargaDatosTabla(this.vBoleto.getgD().getBoletoList().size(),3);
-            this.vBoleto.setDatos(datoBoleto);
-            this.vBoleto.getModeloTabla().setDataVector(this.vBoleto.getDatos(), this.vBoleto.getEncabezado());
-           
+        private int codigoAsistente() {
+        String datos = this.ventana.getCombo().get(1).getSelectedItem().toString();
+        int codA = 0;
+        for (int i = 0; i < datos.length(); i++) {
+            if (datos.charAt(i) == 124) {
+                codA = Integer.parseInt(datos.substring(0, i - 1));
+            }
         }
+        return codA;
+    }
+        
+    private int codigoPresentacion() {
+        String datos = this.ventana.getCombo().get(0).getSelectedItem().toString();
+        int codP = 0;
+        for (int i = 0; i < datos.length(); i++) {
+            if (datos.charAt(i) == 124) {
+                codP = Integer.parseInt(datos.substring(0, i - 1));
+            }
+        }
+        return codP;
     }
     
 }

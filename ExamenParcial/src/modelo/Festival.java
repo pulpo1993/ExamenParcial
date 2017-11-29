@@ -10,14 +10,24 @@ package modelo;
  * @author Pulpo
  */
 public class Festival {
+    private int codigo;
     private String nombreFestival;
     private String direccion;
     private String horaFestival;
 
-    public Festival(String nombreFestival, String direccion, String horaFestival) {
+    public Festival(int codigo, String nombreFestival, String direccion, String horaFestival) {
+        this.codigo = codigo;
         this.nombreFestival = nombreFestival;
         this.direccion = direccion;
         this.horaFestival = horaFestival;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombreFestival() {
@@ -43,6 +53,10 @@ public class Festival {
     public void setHoraFestival(String horaFestival) {
         this.horaFestival = horaFestival;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Festival{" + "codigo=" + codigo + ", nombreFestival=" + nombreFestival + ", direccion=" + direccion + ", horaFestival=" + horaFestival + '}';
+    }
     
 }
