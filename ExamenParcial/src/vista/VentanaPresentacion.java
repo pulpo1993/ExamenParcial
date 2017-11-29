@@ -188,9 +188,9 @@ public class VentanaPresentacion extends JInternalFrame {
 
         //Tabla 
         this.encabezado = new Object[3];
-        this.encabezado[0] = "Aspirante";
-        this.encabezado[1] = "Carrera";
-        this.encabezado[2] = "Periodo";
+        this.encabezado[0] = "Festival";
+        this.encabezado[1] = "Artista";
+        this.encabezado[2] = "Orden";
 
         this.datos = cargarDatos(this.gD.getPresentacionList().size(), this.encabezado.length);
         this.modeloTabla = new DefaultTableModel(this.datos, this.encabezado);
