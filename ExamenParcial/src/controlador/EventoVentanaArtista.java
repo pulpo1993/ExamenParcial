@@ -32,7 +32,7 @@ public class EventoVentanaArtista implements ActionListener {
                 String experiencia = this.ventana.getTextoList().get(5).getText();
                 Artista ar = new Artista(codigo, nombre, apellido, cedula, genero, experiencia);
                 for (Artista a : this.ventana.getgD().getArtistaList()) {
-                    if (a.getCodigo() == a.getCodigo()) {
+                    if (a.getCodigo() == codigo) {
                         throw new ExcepcionRepetidos("Dato Repetido");
                     }
                 }

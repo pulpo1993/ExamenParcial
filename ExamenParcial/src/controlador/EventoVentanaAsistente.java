@@ -30,7 +30,7 @@ public class EventoVentanaAsistente implements ActionListener {
                 String cedula = this.ventana.getTextoList().get(4).getText();
                 Asistente as = new Asistente(codigo, nombre, apellido, cedula, edad);
                 for (Asistente a : this.ventana.getgD().getAsistenteList()) {
-                    if (a.getCodigo() == a.getCodigo()) {
+                    if (a.getCodigo() == codigo) {
                         throw new ExcepcionRepetidos("Dato Repetido");
                     }
                 }
